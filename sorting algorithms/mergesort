@@ -4,7 +4,7 @@ using std::cin;
 using std::cout;
 
 void merge(int *array, int left, int right) {
-    int* array_temp = new int[right - left + 1];
+    int* array_temp = new int[right+1];
 
     for (int i = left; i <= right; i++) {
         array_temp[i] = array[i];
@@ -32,9 +32,12 @@ void merge(int *array, int left, int right) {
 void mergesort(int* array, int left, int right) {
     int mid;
     mid = (left + right) / 2;
-    mergesort(array, left, mid);
-    mergesort(array, (mid + 1), right);
-    merge(array, left, right);
+
+    if (left < right) {
+        mergesort(array, left, mid);
+        mergesort(array, (mid + 1), right);
+        merge(array, left, right);
+    }
 }
 
 int main() {
