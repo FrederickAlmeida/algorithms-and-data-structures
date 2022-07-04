@@ -3,8 +3,8 @@
 using std::cin;
 using std::cout;
 
-void merge(int *array, int left, int right) {
-    int* array_temp = new int[right+1];
+void merge(int* array, int left, int right) {
+    int* array_temp = new int[right + 1];
 
     for (int i = left; i <= right; i++) {
         array_temp[i] = array[i];
@@ -14,7 +14,7 @@ void merge(int *array, int left, int right) {
     mid = (left + right) / 2;
     i1 = left;
     i2 = mid + 1;
-    
+
     for (int curr = left; curr <= right; curr++) {
         if (i1 == (mid + 1))
             array[curr] = array_temp[i2++];
@@ -41,17 +41,30 @@ void mergesort(int* array, int left, int right) {
 }
 
 int main() {
-    int array[] = { 42, 20, 17, 13, 28, 14, 23, 15 };
-    int size, left, right;
+    int casos, size, left, right;
+    cin >> casos;
 
-    size = sizeof(array) / sizeof(int);
-    left = 0;
-    right = size - 1;
+    for (int i = 0; i < casos; i++) {
+        cin >> size;
+        int* parray = new int[size];
 
-    mergesort(array, left, right);
+        for (int j = 0; j < size; j++) {
+            cin >> parray[j];
+        }
 
-    for (int i = 0; i < size; i++)
-        cout << array[i] << " ";
+        left = 0;
+        right = size - 1;
+
+        mergesort(parray, left, right);
+
+        for (int i = 0; i < size; i++)
+            if (i < (size - 1)) {
+                cout << parray[i] << " ";
+            }
+            else cout << parray[i] << "\n";
+
+        delete[] parray;
+    }
 
     return 0;
 }
