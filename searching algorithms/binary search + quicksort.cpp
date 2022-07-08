@@ -50,7 +50,7 @@ int binarysearch(int* array, int k, int l, int r) {
 
     if (array[m] == k) {
       return m;
-    } else if (array[m] < k) {
+    } else if (k < array[m]) {
       binarysearch(array, k, l, m-1);
     } else {
       binarysearch(array, k, m+1, r);
