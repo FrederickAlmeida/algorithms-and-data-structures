@@ -42,18 +42,18 @@ int hoarepartition(int* array, int l, int r) {
   return j;
 }
 
-int binarysearch(int* array, int k, int l, int r) {
-  
-  if (l <= r) {
-    int m;
-    m = (l + r)/2;
+int binarysearch(int* array, int k, int size) {
+  int l = 0, r = size-1, m;
 
+  while (l <= r) {
+    m = (l + r) / 2;
+    
     if (array[m] == k) {
-      return m;
+        return m;
     } else if (k < array[m]) {
-      binarysearch(array, k, l, m-1);
+        r = m - 1;
     } else {
-      binarysearch(array, k, m+1, r);
+        l = m + 1;
     }
   }
   
