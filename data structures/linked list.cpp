@@ -38,6 +38,10 @@ private:
   }
 
 public:
+  LinkedList() {
+    init();
+  }
+
   void insert(int value) {
     curr->next = new Node(value, curr->next);
     size++;
@@ -68,16 +72,16 @@ public:
 
   int remove() {
     if (curr->next == NULL)             // caso nao tenha nenhum node após o cursor
-        return NULL;
-    
+        return 0;
+
     int value = curr->next->element;       // salvar o elemento para retornar ele depois
     Node* ntemp = curr->next;              // guardar a localização do node em uma variável, para nao perder ele
 
     if (tail = curr->next)                 // caso seja o ultimo node, atualizar o tail
         tail = curr;
-    
-    delete ntemp;                          // recuperar o espaço
+
     curr->next = curr->next->next;
+    delete ntemp;                          // recuperar o espaço        
     size--;
 
     return value;
