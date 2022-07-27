@@ -55,7 +55,9 @@ public:
     }
 
     int topvalue() {
-        return top->element;
+        if (size > 0) {
+            return top->element;
+        }
     }
 
     void clear() {
@@ -67,7 +69,6 @@ public:
                 top = top->next;
                 delete temp;
             } while (top != NULL);
-          size = 0;
         }
     }
 
