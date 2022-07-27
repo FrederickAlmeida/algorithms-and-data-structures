@@ -67,6 +67,7 @@ public:
                 top = top->next;
                 delete temp;
             } while (top != NULL);
+          size = 0;
         }
     }
 
